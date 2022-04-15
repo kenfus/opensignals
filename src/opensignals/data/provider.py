@@ -249,7 +249,8 @@ class Provider(ABC):
             return
 
         logger.info(f'Storing data for {n_ticker_data} tickers')
-        df.to_parquet(db_dir / f'{dt.datetime.utcnow().timestamp()}.parquet', index=False)
+        today = dt.datetime.now().strftime('%Y-%m-%d')
+        df.to_parquet(db_dir / f'{today}.parquet', index=False)
         return
 
     @abstractmethod
